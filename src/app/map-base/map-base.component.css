@@ -1,0 +1,112 @@
+h2{
+    color: #fff;
+    text-align: center;
+}
+
+.cntry-base-color{
+    fill:hsl(94, 39%, 83%);
+}
+
+.active{
+    fill: rgb(113, 58, 145);
+}
+
+.num-container{
+    width: 60px;
+    margin-right: 10px;
+}
+
+.game-panel-btn{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.correctAnswer{
+    background-color: darkgreen;
+    color: #fff;
+    padding: 5px;
+}
+
+.bits-cont{
+    width: 80px;
+    float: left;
+}
+
+.answer-text{
+    z-index: 9999;
+    color: tomato;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
+
+#map-base-container{
+    height: 1200px;
+    width: 2000px;
+    background-color: rgb(161, 202, 221);
+}
+
+#game-panel{
+    width: 250px;
+    padding: 15px;
+    position: absolute;
+    z-index: 999;
+    margin-top: 400px;
+    margin-left: 30px;
+    background-color: #fff;
+}
+
+#svg2{
+    margin-left: -50px;
+}
+
+#points-box{
+    padding: 10px;
+    background-color: tomato;
+    color: #fff;
+}
+
+#timer-box{
+    padding: 10px;
+    background-color: hsl(129, 35%, 43%);
+    color: #fff;
+}
+
+#end-game-container{
+    width: 300px;
+    height: 300px;
+    background-color: rgb(202, 72, 98);
+    position: absolute;
+    z-index: 9999;
+    margin-top: 100px;
+    margin-left: 550px;
+    margin-right: 400px;
+}
+
+#play-again-btn{
+    margin-left: 100px;
+}
+
+#answerTextBackground{
+    background-color: #fff;
+    position: fixed;
+    width: 260px;
+    height: 130px;
+    opacity: 0.5;
+}
+
+#answerText{
+    position: fixed;
+    width: 260px;
+    height: 130px;
+}
+
+
+.lottie{
+    position: absolute;
+    z-index: 10;
+    fill: green;
+}
