@@ -82,12 +82,12 @@ export class MapBaseComponent implements OnInit {
             startingXpos = subString.substring(0,subString.indexOf(','));
             startingYpos = subString.substring(subString.indexOf(',') + 1,subString.indexOf(' '));
             
-            cData.countryName = "{'Name': " + "'" + countryName + "',";
+            /*cData.countryName = "{'Name': " + "'" + countryName + "',";
             cData.countryId = "'Id': " + "'" + countryId + "',";
             cData.dataId = "'DataId': " + i + ",";
             cData.xStartPos = "'Xpos': " + startingXpos + ",";
             cData.yStartPos = "'Ypos': " + startingYpos + ",";
-            cData.pathData = "'PData': " + '"' + startString + '"},';
+            cData.pathData = "'PData': " + '"' + startString + '"},';*/
 
             this.cd.push(cData);
         }

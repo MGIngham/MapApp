@@ -1,11 +1,11 @@
 export class CountriesData{
     
-    public countryId: string;
-    public dataId: string;
-    public xStartPos: string;
-    public yStartPos: string;
-    public countryName: string;
-    public pathData: string;
+    //public countryId: string;
+    //public dataId: string;
+    //public xStartPos: string;
+    //public yStartPos: string;
+    //public countryName: string;
+    //public pathData: string;
 
 public cntryObj = {
 "countries": [{'Name': 'Afghanistan',
