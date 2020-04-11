@@ -30,7 +30,6 @@ THE SOFTWARE.
 
 <div id="map-base-container">
 
-
    <div id="game-panel">
 
       <div *ngFor="let opt of opts; let i = index" class="custom-control custom-radio">
@@ -67,6 +66,7 @@ THE SOFTWARE.
       <h3 class="answer-text" *ngIf="isCorrect">{{countryName}}</h3>
       <br>
       <h3 class="answer-text">{{isCorrectText}}</h3>
+      {{countryName}}
    </div>
 
    <div *ngIf="gameOver" id="end-game-container">
@@ -95,13 +95,14 @@ THE SOFTWARE.
    sodipodi:docname="world.svg">
 
    <path
-      *ngFor="let c of cntryData.cntryObj['countries']"
+      *ngFor="let c of cntryData.cntryObj['countries'], let i = index"
+     [ngClass]="{'active': currentIndex === i}"
      inkscape:connector-curvature="0"
      id={{c.Id}}
      attr.data-name={{c.Name}}
      data-id={{c.DataId}}
      attr.d={{c.PData}}
-     (click)="selectCountry($event)" class="cntry-base-color country"/>
+     (click)="currentIndex=i; countryName = c.Name" class="cntry-base-color country"/>
   
 
    <!--<path

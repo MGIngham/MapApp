@@ -26,7 +26,7 @@ export class MapBaseComponent implements OnInit {
     activeRadio: number;
     d: any;
     cntryData: CountriesData = new CountriesData();
-    cd: CountriesData[] = [];
+    //cd: CountriesData[] = [];
     
 
     
@@ -46,7 +46,7 @@ export class MapBaseComponent implements OnInit {
 
     //nameMe: NameMe = new NameMe(0,180)
 
-    selectCountry(event: any){
+    /*selectCountry(event: any){
 
         let startString: string;
         let subString: string;
@@ -58,16 +58,15 @@ export class MapBaseComponent implements OnInit {
             document.getElementById(this.currentId).classList.remove('active');
         }
         event.target.classList.add('active');
-        this.countryName = event.target.getAttribute('data-name');
         this.currentId = event.target.getAttribute('id');
 
-       // cntryIndex = this.cntryData.cntryObj["countries"].indexOf('Germany')
+       cntryIndex = this.cntryData.cntryObj["countries"].indexOf('Germany')
 
-        //alert(this.cntryData.cntryObj["countries"][0].Xpos);
+        alert(this.cntryData.cntryObj["countries"][0].Xpos);
 
         allCountries = document.getElementsByClassName("country");
 
-       for(let i = 0; i < allCountries.length; i ++){
+      for(let i = 0; i < allCountries.length; i ++){
 
             let cData = new CountriesData();
             let countryId;
@@ -82,17 +81,17 @@ export class MapBaseComponent implements OnInit {
             startingXpos = subString.substring(0,subString.indexOf(','));
             startingYpos = subString.substring(subString.indexOf(',') + 1,subString.indexOf(' '));
             
-            /*cData.countryName = "{'Name': " + "'" + countryName + "',";
+            cData.countryName = "{'Name': " + "'" + countryName + "',";
             cData.countryId = "'Id': " + "'" + countryId + "',";
             cData.dataId = "'DataId': " + i + ",";
             cData.xStartPos = "'Xpos': " + startingXpos + ",";
             cData.yStartPos = "'Ypos': " + startingYpos + ",";
-            cData.pathData = "'PData': " + '"' + startString + '"},';*/
+            cData.pathData = "'PData': " + '"' + startString + '"},';
 
             this.cd.push(cData);
         }
 
-    }
+    }*/
 
 
     startTimer(){
@@ -121,29 +120,29 @@ export class MapBaseComponent implements OnInit {
         this.opts = [];
         this.answerOptionsArray = [];
         this.countryName = "";
-        let c = document.getElementsByClassName("country");
-        let d = document.getElementById(this.currentId);
-        let arrLength = this.ac.length;
-        let rndNumOne = Math.floor(Math.random() * (arrLength-1+1)) + 1;
-        let rndNumTwo = Math.floor(Math.random() * (arrLength-1+1)) + 1;
+        //let c = document.getElementsByClassName("country");
+        //let d = document.getElementById(this.currentId);
+        //let arrLength = this.ac.length;
+        let rndNumOne = Math.floor(Math.random() * (this.ac.length-1+1)) + 1;
+        let rndNumTwo = Math.floor(Math.random() * (this.ac.length-1+1)) + 1;
         let rdmCntryId = Math.floor(Math.random() * (220-1+1)) + 1;
 
-        if(this.currentId){
+        /*if(this.currentId){
             d.classList.remove('active');
-        }
+        }*/
 
-        if(this.currentIndex){
+        /*if(this.currentIndex){
             c[this.currentIndex].classList.remove('active');
-        }
+        }*/
 
-        c[rdmCntryId].classList.add('active');
+        //c[rdmCntryId].classList.add('active');
 
         this.currentIndex = rdmCntryId;
-        this.currentId = c[rdmCntryId].id;
+        //this.currentId = c[rdmCntryId].id;
 
         this.answerOptionsArray.push(this.ac[rndNumOne]);
         this.answerOptionsArray.push(this.ac[rndNumTwo]);
-        this.answerOptionsArray.push(document.getElementById(this.currentId).getAttribute('data-name'));
+        this.answerOptionsArray.push(this.cntryData.cntryObj['countries'][this.currentIndex].Name);
         this.shuffle(this.answerOptionsArray);
 
         this.opts = this.answerOptionsArray;
@@ -171,7 +170,7 @@ export class MapBaseComponent implements OnInit {
 
         this.isCorrect = false;
 
-        this.countryName = document.getElementById(this.currentId).getAttribute('data-name');
+        this.countryName = this.cntryData.cntryObj['countries'][this.currentIndex].Name;
 
         if(event.target.value == this.countryName){
             this.isCorrectText = "CORRECT!!";
