@@ -68,13 +68,7 @@ THE SOFTWARE.
       <h3 class="answer-text">{{isCorrectText}}</h3>
       {{countryName}}
    </div>
-
-   <div *ngIf="gameProperties.gameOver" id="end-game-container">
-      <h2>Times Up!!!</h2>
-      <h2>You scored: {{ gameProperties.finalPoints }} points! Well done!</h2>
-      <br>
-      <button class="btn btn-primary" id="play-again-btn" (click)="gameProperties.restartGame()">Play Again</button>
-   </div>
+   
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { CountriesData } from '../models/countries-data.model';
 import { GameProperties } from '../models/game-properties.model';
 
@@ -11,10 +11,12 @@ import { GameProperties } from '../models/game-properties.model';
 export class MapBaseComponent implements OnInit {
     
     //Object contraining countries data.
-    cntryData: CountriesData;;
+    cntryData: CountriesData;
 
     //Object defining game scoring and timing properties. 
-    gameProperties: GameProperties;;
+    gameProperties: GameProperties;
+
+    @Output() gaveEnded: EventEmitter<boolean>;
 
     //DOM manipulation and country data variables.
     isActive = false;
@@ -97,6 +99,10 @@ export class MapBaseComponent implements OnInit {
             this.isCorrectText = "WRONG!";          
         }
 
+    }
+
+    gameEnded(isGameOver: boolean){
+        this.gaveEnded.emit(isGameOver);
     }
 
     ngOnInit(){
