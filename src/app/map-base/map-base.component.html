@@ -43,20 +43,20 @@ THE SOFTWARE.
       <br>
 
       <!--<input type="text" class="form-control" [(ngModel)]="answer" (ngModelChange)="checkAnswer($event)">-->
-      <button [disabled]="goDisabled" class="btn btn-primary game-panel-btn" (click)="getCountry()">Go</button>
-      <button [disabled]="startDisabled" class="btn btn-primary game-panel-btn" (click)="startTimer()">Start</button>
+      <button [disabled]="gameProperties.goDisabled" class="btn btn-primary game-panel-btn" (click)="getCountry()">Go</button>
+      <button [disabled]="gameProperties.startDisabled" class="btn btn-primary game-panel-btn" (click)="gameProperties.startTimer()">Start</button>
 
       <br>
       <div class="bits-cont">
          <h4>Points</h4>
          <div class="num-container">        
-            <h3 id="points-box">{{ points }}</h3>
+            <h3 id="points-box">{{ gameProperties.points }}</h3>
          </div>
       </div>
       <div class="bits-cont">
          <h4>Time</h4>
          <div class="num-container">
-            <h3 id="timer-box">{{ timer }}</h3>
+            <h3 id="timer-box">{{ gameProperties.timer }}</h3>
          </div>
       </div>
    </div>
@@ -69,11 +69,11 @@ THE SOFTWARE.
       {{countryName}}
    </div>
 
-   <div *ngIf="gameOver" id="end-game-container">
+   <div *ngIf="gameProperties.gameOver" id="end-game-container">
       <h2>Times Up!!!</h2>
-      <h2>You scored: {{ finalPoints }} points! Well done!</h2>
+      <h2>You scored: {{ gameProperties.finalPoints }} points! Well done!</h2>
       <br>
-      <button class="btn btn-primary" id="play-again-btn" (click)="restartGame()">Play Again</button>
+      <button class="btn btn-primary" id="play-again-btn" (click)="gameProperties.restartGame()">Play Again</button>
    </div>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CountriesData } from '../countries-data.model';
+import { CountriesData } from '../models/countries-data.model';
+import { GameProperties } from '../models/game-properties.model';
 
 @Component({
     selector: 'app-map-base',
@@ -10,21 +11,21 @@ import { CountriesData } from '../countries-data.model';
 export class MapBaseComponent implements OnInit {
     
     //Object contraining countries data.
-    cntryData: CountriesData = new CountriesData();
+    cntryData: CountriesData;;
+
+    //Object defining game scoring and timing properties. 
+    gameProperties: GameProperties;;
+
     //DOM manipulation and country data variables.
     isActive = false;
     countryName: string;
     currentId: string;
     currentIndex: number;
-    startDisabled = false;
-    goDisabled = false;
+
     gameOver: boolean = false;
-    x: number;
-    y: number;
-    //Scoring variables.
-    points: number = 0;
-    finalPoints: number;
-    //Answers and options variables
+    x: number = 20;
+    y: number = 20;
+
     answer: string;
     isCorrect: boolean;
     isCorrectText: string;
@@ -35,26 +36,7 @@ export class MapBaseComponent implements OnInit {
     wrongAnswerOne: string;
     wrongAnswerTwo: string;
     //Timer variables
-    timer: number = 180;
-
-    startTimer(){
-
-        let x = setInterval(() => {this.timer -= 1
-        
-            if(this.timer == 0){
-                clearInterval(x);
-                this.finalPoints = this.points;
-                this.startDisabled = true;
-                this.goDisabled = true;
-                this.points = 0;
-                this.gameOver = true;
-            }
-        
-        }, 1000);
-
-        this.timer = 180;
-
-    }
+    //timer: number;
 
     getCountry(){
 
@@ -108,7 +90,7 @@ export class MapBaseComponent implements OnInit {
 
         if(event.target.value == this.countryName){
             this.isCorrectText = "CORRECT!!";
-            this.points ++;
+            this.gameProperties.points ++;
             this.isCorrect = true;
             this.correctAnswer = this.countryName;
         } else {
@@ -117,20 +99,9 @@ export class MapBaseComponent implements OnInit {
 
     }
 
-    restartGame(){
-        this.gameOver = false;
-        this.startDisabled = false;
-        this.goDisabled = false; 
-        this.points = 0;
-        this.timer = 180;
-    }
-
-    constructor(){
-
-    }
-
     ngOnInit(){
-        
+        this.cntryData = new CountriesData();
+        this.gameProperties = new GameProperties(0,0,20);
     }
 
 }
