@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges } from '@angular/core';
 import { CountriesData } from '../models/countries-data.model';
 import { GameProperties } from '../models/game-properties.model';
 
@@ -15,8 +15,10 @@ export class MapBaseComponent implements OnInit {
 
     //Object defining game scoring and timing properties. 
     gameProperties: GameProperties;
-
-    @Output() gaveEnded: EventEmitter<boolean>;
+    
+    @Output() gameStart: EventEmitter<boolean> = new EventEmitter();
+    @Output() gameEnd: EventEmitter<number> = new EventEmitter();
+    @Input() restart: boolean;
 
     //DOM manipulation and country data variables.
     isActive = false;
@@ -84,6 +86,34 @@ export class MapBaseComponent implements OnInit {
             return arr;
     }
 
+    startTimer(){
+
+        this.gameProperties.timer = this.gameProperties.timerStartTime;
+
+        this.gameProperties.points = 0;
+
+        let x = setInterval(() => {this.gameProperties.timer -= 1
+        
+            if(this.gameProperties.timer == 0){
+                clearInterval(x);
+                this.gameEnded(this.gameProperties.points);
+                this.gameStarted(true);
+                this.gameProperties.finalPoints = this.gameProperties.points;
+                this.gameProperties.startDisabled = true;
+                this.gameProperties.goDisabled = true;
+                //this.gameProperties.gameOver = true;
+                this.answerOptionsArray = [""];
+                this.countryName = "";
+                this.isCorrectText = "";
+                this.opts = [];
+            }
+        
+        }, 1000);
+
+        this.gameProperties.timer = this.gameProperties.timerStartTime;
+
+    }
+
     checkAnswer(event: any){
 
         this.isCorrect = false;
@@ -101,13 +131,23 @@ export class MapBaseComponent implements OnInit {
 
     }
 
-    gameEnded(isGameOver: boolean){
-        this.gaveEnded.emit(isGameOver);
+    gameStarted(s: boolean){
+        this.gameStart.emit(s);
+    }
+
+    gameEnded(finalScore: number){
+        this.gameEnd.emit(finalScore);
     }
 
     ngOnInit(){
         this.cntryData = new CountriesData();
-        this.gameProperties = new GameProperties(0,0,20);
+        this.gameProperties = new GameProperties(0,0,10);
+    }
+
+    ngOnChanges(){
+        if(this.restart){
+            this.gameProperties.restartGame();
+        }
     }
 
 }

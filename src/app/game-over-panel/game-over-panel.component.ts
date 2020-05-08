@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-game-over-panel',
@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameOverPanelComponent implements OnInit {
 
+  @Input() fScore: number;
+  @Output() restartGame: EventEmitter<void> = new EventEmitter();
+
   constructor() { }
+
+  rGame(){
+    this.restartGame.emit();
+  }
 
   ngOnInit(): void {
   }

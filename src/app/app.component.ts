@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MapApp';
-  name = 'Matt';
+  gameOver: boolean;
+  finalScore: number;
+  restartGame: boolean;
 }

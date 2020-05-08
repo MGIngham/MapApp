@@ -44,7 +44,9 @@ THE SOFTWARE.
 
       <!--<input type="text" class="form-control" [(ngModel)]="answer" (ngModelChange)="checkAnswer($event)">-->
       <button [disabled]="gameProperties.goDisabled" class="btn btn-primary game-panel-btn" (click)="getCountry()">Go</button>
-      <button [disabled]="gameProperties.startDisabled" class="btn btn-primary game-panel-btn" (click)="gameProperties.startTimer()">Start</button>
+      <button [disabled]="gameProperties.startDisabled" 
+               class="btn btn-primary game-panel-btn" 
+               (click)="startTimer()">Start</button>
 
       <br>
       <div class="bits-cont">

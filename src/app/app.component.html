@@ -1,2 +1,2 @@
-<app-map-base></app-map-base>
-<app-game-over-panel></app-game-over-panel>
+<app-game-over-panel (restartGame)="restartGame = true; gameOver = false" *ngIf="gameOver" [fScore]="finalScore"></app-game-over-panel>
+<app-map-base [restart]="restartGame" (gameStart)="restartGame = false" (gameEnd)="gameOver = true; finalScore = $event"></app-map-base>
